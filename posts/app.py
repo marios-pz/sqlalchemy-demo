@@ -1,6 +1,7 @@
 from typing import override
 from sqlalchemy import ForeignKey, Integer, String, create_engine
 from sqlalchemy.orm import (
+    DeclarativeBase,
     Mapped,
     declarative_base,
     mapped_column,
@@ -15,7 +16,9 @@ engine = create_engine(db_url, echo=True)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-Base = declarative_base()
+
+class Base(DeclarativeBase):
+    pass
 
 
 class User(Base):
